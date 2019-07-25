@@ -1,0 +1,155 @@
+import java.util.ArrayList;
+
+public class CashRegister {
+
+    private double cashInRegister;
+    private int economicalSold;
+    private int gourmetSold;
+    private MyDate todaysDate;
+    private Menu economical;
+    private Menu gourmet;
+
+    // at start the register has 1000 euro 
+    public CashRegister(MyDate todaysDate) {
+        this.cashInRegister = 1000;
+        this.setTodaysDate(todaysDate);
+        this.economical = new Menu(2.5);
+        this.gourmet = new Menu(4.0);
+        
+        
+        
+    }
+
+    public double payEconomical(double cashGiven) {
+         if (cashGiven >= 2.5) {
+             this.cashInRegister += 2.5;
+             economicalSold++;
+             return cashGiven - 2.5;
+         } else {
+             return cashGiven;
+         }
+    }
+
+    public double payGourmet(double cashGiven) {
+        if (cashGiven >= 4.0) {
+            this.cashInRegister += 4.0;
+            gourmetSold++;
+            return cashGiven - 4.0;
+        } else {
+            return cashGiven;
+        }       
+    }
+    
+    public boolean payEconomical(LyyraCard card) {
+        if (this.todaysDate.whichIsOlder(card.getExpirationDate())) {
+        	if (card.balance() >= 2.5) {
+                economicalSold++;
+                card.pay(2.5);
+                return true;
+        } else {
+        	return false;
+        }
+    	
+        } else {
+            return false;
+        }
+    }
+
+    public boolean payGourmet(LyyraCard card) {
+    	if (this.todaysDate.whichIsOlder(card.getExpirationDate())) {
+        	if (card.balance() >= 4.0) {
+                economicalSold++;
+                card.pay(4.0);
+                return true;
+        } else {
+        	return false;
+        }
+    	
+        } else {
+            return false;
+        }
+    }
+    
+    public void loadMoneyToCard(LyyraCard card, double sum) {
+        if (sum > 0.0) {
+        	if (this.todaysDate.whichIsOlder(card.getExpirationDate())) {
+            card.loadMoney(sum);
+            this.cashInRegister += sum;
+        	}
+        }
+    }
+
+    public String toString() {
+        return " Today:"+ todaysDate + "\n Money in register " + cashInRegister + " economical lunches sold: " + economicalSold + " gourmet lunches sold: " + gourmetSold;
+    }
+
+	public MyDate getTodaysDate() {
+		return todaysDate;
+	}
+
+	public void setTodaysDate(MyDate todaysDate) {
+		this.todaysDate = todaysDate;
+	}
+	
+	public void setMenuEconomicalStarter(String dish) {
+		this.economical.addFirst(dish);
+	}
+	
+	public ArrayList<String> getMenuEconomicalStarter() {
+		return this.economical.getFirsts();
+	}
+	
+	public void SetMenuEconomicalMain(String dish) {
+		this.economical.addMain(dish);
+	}
+	
+	public ArrayList<String> getMenuEconomicalMain() {
+		return this.economical.getMains();
+	}
+	
+	public void SetMenuEconomicalDessert(String dish) {
+		this.economical.addDesserts(dish);
+	}
+	
+	public ArrayList<String> getMenuEconomicalDessert() {
+		return this.economical.getdesserts();
+	}
+	
+	public void setMenuGourmetStarter(String dish) {
+		this.gourmet.addFirst(dish);
+	}
+	
+	public ArrayList<String> getMenuGourmetStarter() {
+		return this.gourmet.getFirsts();
+	}
+	
+	public void setMenuGourmetMain(String dish) {
+		this.gourmet.addMain(dish);
+	}
+	
+	public ArrayList<String> getMenuGourmetMain() {
+		return this.gourmet.getMains();
+	}
+	
+	public void setMenuGourmetDessert(String dish) {
+		this.gourmet.addDesserts(dish);
+	}
+	
+	public ArrayList<String> getMenuGourmetDessert() {
+		return this.gourmet.getdesserts();
+	}
+	
+
+	public Menu getEconomical() {
+		return economical;
+	}
+
+	
+
+	public Menu getGourmet() {
+		return gourmet;
+		
+	}
+
+	
+}
