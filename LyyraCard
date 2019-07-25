@@ -1,0 +1,35 @@
+
+public class LyyraCard {
+	private MyDate expirationDate;
+    private double balance;
+    
+    public LyyraCard(double balance, MyDate expirationDate) {
+    	this.balance = balance;
+    	this.expirationDate = expirationDate;
+    }
+ 
+    public MyDate getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(MyDate expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public double balance() {
+        return this.balance;
+    }
+
+    public void loadMoney(double amount) {
+        this.balance += amount;
+    }
+
+    public boolean pay(double amount) {
+        if (this.balance < amount) {
+            return false;
+        } else {
+            this.balance -= amount;
+            return true;
+        }
+    }
+}
