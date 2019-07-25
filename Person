@@ -1,0 +1,56 @@
+
+public class Person {
+    private LyyraCard card;
+    private String name;
+    private MyDate birthday;
+    private double money;
+
+    
+    public Person(LyyraCard card, String name, MyDate birthday) {
+    	this.card = card;
+    	this.name = name;
+    	this.birthday = birthday;
+    }
+
+    public Person(LyyraCard card, String name) {
+        this.card = card;
+        this.name = name;
+    }
+    
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public void setCard(LyyraCard card) {
+        this.card = card;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public MyDate getBirthday() {
+ 		return birthday;
+ 	}
+
+ 	public void setBirthday(MyDate birthday) {
+ 		this.birthday = birthday;
+ 	}
+
+ 	public LyyraCard getCard() {
+         return card;
+     }
+ 	
+ 	public void setMoney(double startingMoney) {
+ 		this.money = startingMoney;
+ 	}
+ 	
+ 	public double getMoney( ) {
+ 		return this.money;
+ 	}
+
+     public String getName() {
+         return name;
+     }
+    
+}
