@@ -1,0 +1,21 @@
+
+public class Main {
+
+    public static void main(String[] args) {
+    	MyDate today = new MyDate(28,7,2019);
+        CashRegister loCafe = new CashRegister(today);
+        loCafe.setMenuEconomicalStarter("Ensalada");
+        loCafe.SetMenuEconomicalMain("Pollo");
+        loCafe.SetMenuEconomicalDessert("flan");
+        loCafe.setMenuGourmetStarter("Cocktail de gambas");
+        loCafe.setMenuGourmetMain("Entrecotte");
+        loCafe.setMenuGourmetDessert("Fruta muy cara");
+        Person pepe = new Person("Pepe");
+        MyDate expiration = new MyDate(20, 6, 2020);
+        LyyraCard tarjetaDePepe = new LyyraCard(100, expiration);
+        pepe.setCard(tarjetaDePepe);
+        
+        CashierMenu.Menu(loCafe, pepe, tarjetaDePepe);
+        
+    }
+}
